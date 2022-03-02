@@ -7,3 +7,4 @@ Display contents of current directory in long format even hidden files with UID 
 Creates a directory in tmp
 Moving file betty
 Deleting file betty
+Deleting a directory
