@@ -11,3 +11,4 @@ Deleting a directory
 Going back to previous directory
 Listing files
 Printing file type
+Creating a symbolic link
