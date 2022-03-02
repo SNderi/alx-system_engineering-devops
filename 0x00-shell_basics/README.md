@@ -15,3 +15,4 @@ Creating a symbolic link
 Copying html files
 Moves files starting with an uppercase letter
 Deletes files ending with ~
+Creates 3 directories using only 3 spaces
