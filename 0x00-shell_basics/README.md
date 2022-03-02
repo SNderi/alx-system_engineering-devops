@@ -9,3 +9,4 @@ Moving file betty
 Deleting file betty
 Deleting a directory
 Going back to previous directory
+Listing files
