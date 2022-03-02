@@ -8,3 +8,4 @@ Creates a directory in tmp
 Moving file betty
 Deleting file betty
 Deleting a directory
+Going back to previous directory
