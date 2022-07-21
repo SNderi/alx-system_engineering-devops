@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#  This script displays "Best School" 10 times but displays
+#+ "bad luck" on 4th loop and "good luck" on 8th loop
+
+z=1
+while [ $z -le 10 ]
+do
+	if [ $z -eq 4 ]
+	then
+		echo "bad luck"
+	elif [ $z -eq 8 ]
+	then
+		echo "good luck"
+	else
+		echo "Best School"
+	fi
+	(( z++))
+done
