@@ -3,4 +3,5 @@
 exec { 'pkill':
     command  => 'pkill killmenow',
     path     => '/user/bin',
+    provider => 'shell',
 }
