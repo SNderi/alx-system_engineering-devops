@@ -11,3 +11,4 @@ file_line { 'PasswordAuthenticate'
     path    => '/etc/ssh/ssh_config',
     line    => '    PasswordAuthentication no'
     replace => true,
+}
