@@ -7,5 +7,5 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 ufw allow 'Nginx HTTP'
 echo "Hello World!" > /var/www/html/index.nginx-debian.html
-sed -i '/listen 80 default_server;/ a rewrite ^/redirect_me 301 https://www.google.com;' /etc/nginx/sites_available/default
+sed -i '/listen 80 default_server;/ a rewrite ^/redirect_me https://www.google.com pemanent;' /etc/nginx/sites_available/default
 service nginx start
