@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 # Fixes an Apache server in a container
-sudo service apache2 start
+echo "Hello Holberton" >> /etc/apache2.conf
+service apache2 start
