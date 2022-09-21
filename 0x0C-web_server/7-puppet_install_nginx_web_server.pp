@@ -1,9 +1,5 @@
 # Puppet manifest to install nginx
 
-exec { 'update system':
-  command => '/usr/bin/apt-get update',
-}
-
 package { 'nginx':
   ensure => installed,
 }
@@ -16,7 +12,7 @@ file_line { 'redirect':
 }
 
 file { '/var/www/html/index.html':
-  content => 'Holberton School',
+  content => 'Hello World!',
 }
 
 service { 'nginx':
