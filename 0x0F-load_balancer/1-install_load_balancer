@@ -6,7 +6,7 @@ add-apt-repository -y ppa:vbernat/haproxy-2.0
 apt-get -y update
 apt-get -y install haproxy=2.0.\*
 sudo echo "
-\nfrontend front
+frontend front
         bind *:80
         mode http
         default_backend back
