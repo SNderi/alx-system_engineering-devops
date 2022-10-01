@@ -35,12 +35,14 @@ defaults
 
 frontend http
         bind *:80
-        mode http
+        http-request add-header X-Forwarded-Proto http
         default_backend web-backend
 
 frontend https
-        bind :443 ssl crt /etc/letsencrypt/live/www.buysnderi.tech/fullchain.pem
-        mode https
+        bind *:443 ssl crt /etc/haproxy/certs/www.buysnderi.tech.pem
+        http-request add-header X-Forwarded-Proto https
+        acl letsencrypt-acl path_beg /.well-known/acme-challenge/
+        use_backend letsencrypt-backend if letsencrypt-acl
         default_backend web-backend
 
 backend web-backend
@@ -48,3 +50,6 @@ backend web-backend
         redirect scheme https if !{ ssl_fc }
         server 29515-web-01 3.235.66.4:80 check
         server 29515-web-02 3.235.223.210:80 check
+
+backend letsencrypt-backend
+        server letsencrypt 127.0.0.1:54321
