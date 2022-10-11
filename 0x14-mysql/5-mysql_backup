@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+curr=`date +"%d%m%Y"`
+mysqldump -u root -p"$1" --all-databases --result-file=backup.sql
+tar -czvf "curr.tar.gz" backup.sql
