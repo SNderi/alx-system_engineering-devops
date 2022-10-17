@@ -3,23 +3,17 @@
 returns information about his/her TODO list progress.
 """
 
+import requests
+import sys
+
+
 if __name__ == "__main__":
-    import requests
-    import sys
+    """Function to display employee todo list."""
+    url = "https://jsonplaceholder.typicode.com/"
+    user = requests.get(url + "users/{}".format(sys.argv[1])).json()
+    todos = requests.get(url + "todos", params={"userId": sys.argv[1]}).json()
 
-    response_todos = requests.get("https://jsonplaceholder.typicode.com/users/"
-                                  "{}/todos".format(sys.argv[1]))
-    response = requests.get('https://jsonplaceholder.typicode.com/users/{}'
-                            .format(sys.argv[1]))
-    name = response.json().get("name")
-    tasks_total = len(response_todos.json())
-    tasks_completed = []
-    for task in response_todos.json():
-        if task.get("completed"):
-            tasks_completed.append(task.get("title"))
-
-    num_completed = len(tasks_completed)
-    print("Employee {} is done with tasks({}/{}):"
-          .format(name, num_completed, tasks_total))
-    for title in tasks_completed:
-        print("\t {}".format(title))
+    completed = [t.get("title") for t in todos if t.get("completed") is True]
+    print("Employee {} is done with tasks({}/{}):".format(
+        user.get("name"), len(completed), len(todos)))
+    [print("\t {}".format(c)) for c in completed]
