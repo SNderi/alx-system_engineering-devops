@@ -8,8 +8,8 @@ if __name__ == "__main__":
     import requests
     import sys
 
-    response_todos = requests.get('https://jsonplaceholder.typicode.com/users/'
-                                  '{}/todos'.format(sys.argv[1]))
+    response_todos = requests.get("https://jsonplaceholder.typicode.com/users/"
+                                  "{}/todos".format(sys.argv[1]))
     response = requests.get('https://jsonplaceholder.typicode.com/users/{}'
                             .format(sys.argv[1]))
     name = response.json().get("username")
