@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-""" A script that given an employee id
-returns information about his/her TODO list progress.
-"""
+"""Returns to-do list information for a given employee ID."""
 
 if __name__ == "__main__":
     import requests
