@@ -1,14 +1,23 @@
 #!/usr/bin/python3
 """Returns to-do list information for a given employee ID."""
-import requests
-import sys
 
 if __name__ == "__main__":
-    url = "https://jsonplaceholder.typicode.com/"
-    user = requests.get(url + "users/{}".format(sys.argv[1])).json()
-    todos = requests.get(url + "todos", params={"userId": sys.argv[1]}).json()
+    import requests
+    import sys
 
-    completed = [t.get("title") for t in todos if t.get("completed") is True]
-    print("Employee {} is done with tasks({}/{}):".format(
-        user.get("name"), len(completed), len(todos)))
-    [print("\t {}".format(c)) for c in completed]
+    url = "https://jsonplaceholder.typicode.com/users/"
+    user_todos = requests.get(url + "{}/todos".format(sys.argv[1]))
+    user = requests.get(url + "{}".format(sys.argv[1]))
+
+    name = user.json().get("name")
+    tasks_total = len(user_todos.json())
+    tasks_completed = []
+    for task in user_todos.json():
+        if task.get("completed"):
+            tasks_completed.append(task.get("title"))
+
+    num_completed = len(tasks_completed)
+    print("Employee {} is done with tasks({}/{}):"
+          .format(name, num_completed, tasks_total))
+    for title in tasks_completed:
+        print("\t {}".format(title))
