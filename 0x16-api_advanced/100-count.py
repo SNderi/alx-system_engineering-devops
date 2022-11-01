@@ -19,8 +19,8 @@ def count_words(subreddit, word_list, after='', word_dict={}):
                 word_dict[word.lower()] = 0
 
     if after is None:
-        word_dict = sorted(word_dict.items(), key=lambda x: x[1], reverse=True)
-        for word in word_dict:
+        wordict = sorted(word_dict.items(), key=lambda x: x[1], reverse=True)
+        for word in wordict:
             if word[1]:
                 print('{}: {}'.format(word[0], word[1]))
         return None
