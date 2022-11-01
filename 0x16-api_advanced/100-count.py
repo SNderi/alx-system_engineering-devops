@@ -19,7 +19,7 @@ def count_words(subreddit, word_list, after='', word_dict={}):
                 word_dict[word.lower()] = 0
 
     if after is None:
-        word_dict = sorted(word_dict.items(), key=lambda x:x[1], reverse=True)
+        word_dict = sorted(word_dict.items(), key=lambda x: x[1], reverse=True)
         for word in word_dict:
             if word[1]:
                 print('{}: {}'.format(word[0], word[1]))
@@ -30,7 +30,7 @@ def count_words(subreddit, word_list, after='', word_dict={}):
     parameters = {'limit': 100, 'after': after}
     response = requests.get(url, headers=header, params=parameters,
                             allow_redirects=False)
-    
+
     if response.status_code != 200:
         return None
 

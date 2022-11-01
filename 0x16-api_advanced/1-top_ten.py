@@ -14,7 +14,7 @@ def top_ten(subreddit):
     url = 'https://www.reddit.com/r/{}/hot/.json?limit=10'.format(subreddit)
     header = {'user-agent': 'redquery'}
     response = requests.get(url, headers=header, allow_redirects=False)
-    
+
     if response.status_code != 200:
         print(None)
 
