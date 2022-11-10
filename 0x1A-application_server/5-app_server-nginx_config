@@ -21,22 +21,28 @@ server {
 
         location /hbnb_static/ {
                 alias /data/web_static/current/;
-        }
-
-        location /airbnb-onepage/ {
-                include proxy_params;
-                proxy_pass http://0.0.0.0:5000/airbnb-onepage/;
-        }
-
+        }                                                                                                                                                                                                                                                                                                                                               location /airbnb-onepage/ {                                                                                                                                                     include proxy_params;                                                                                                                                                   proxy_pass http://0.0.0.0:5000/airbnb-onepage/;                                                                                                                 }                                                                                                                                                               
         location ~ /airbnb-dynamic/number_odd_or_even/[0-9]+$ {
                 rewrite ^/airbnb-dynamic/(.*) /$1 break;
                 include proxy_params;
                 proxy_pass http://0.0.0.0:5001/$uri;
         }
 
+        # Serve AirBnB_clone_v3 API
         location /api {
                 include proxy_params;
                 proxy_pass http://0.0.0.0:5002/api;
+        }
+
+        location / {
+                include proxy_params;
+                proxy_pass http://0.0.0.0:5003/2-hbnb;
+        }
+
+        # Serve static content for AirBnB_clone_v4
+        location /static {
+                include proxy_params;
+                proxy_pass http://0.0.0.0:5003;
         }
 
         rewrite ^/redirect_me https://www.google.com permanent;
@@ -46,9 +52,9 @@ server {
                 internal;
         }
 
-        location / {
+        # location / {
                 # First attempt to serve request as file, then
                 # as directory, then fall back to displaying a 404.
-                try_files $uri $uri/ =404;
-        }
+        #        try_files $uri $uri/ =404;
+        # }
 }

@@ -5,6 +5,7 @@ File | Description
 ---- | -----------
 [2-app_server-nginx_config](./2-app_server-nginx_config) | Configuration for Nginx to serve my page from the route `/airbnb-onepage/`.
 [3-app_server-nginx_config](./3-app_server-nginx_config) | Configuration for Nginx to proxy HTTP requests to the route `/airbnb-dynamic/number_odd_or_even/(any integer)` to a Gunicorn instance listening on port 5001. The key to this exercise is getting Nginx configured to proxy requests to processes listening on two different ports.
+[4-app_server-nginx_config](./4-app_server-nginx_config) | Configuration for Nginx to serve what I built for [AirBnB clone v3 - RESTful API](./https://github.com/SNderi/AirBnB_clone_v3) from the route `/api/` 
 ## Concepts Covered
 1. DevOps
 2. SysAdmin
