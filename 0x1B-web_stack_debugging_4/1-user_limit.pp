@@ -5,6 +5,6 @@ exec { 'Change-hoberton-user-limits':
                    'NHARD=hard nofile 5000',
                    'OSOFT=soft nofile 4',
                    'NSOFT=soft nofile 4000'],
-  command       => 'sudo sed -i "s/$OHARD/$ONEW" $DIR; sudo sed -i "s/$OSOFT/$NSOFT" $DIR',
+  command       => 'sudo sed -i "s/$OHARD/$NHARD" $DIR; sudo sed -i "s/$OSOFT/$NSOFT" $DIR',
   provider      => shell
 }
