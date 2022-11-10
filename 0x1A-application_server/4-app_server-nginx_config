@@ -28,15 +28,15 @@ server {
                 proxy_pass http://0.0.0.0:5000/airbnb-onepage/;
         }
 
-        location ~ ^/airbnb-dynamic/number_odd_or_even/[0-9]+$ {
+        location ~ /airbnb-dynamic/number_odd_or_even/[0-9]+$ {
                 rewrite ^/airbnb-dynamic/(.*) /$1 break;
                 include proxy_params;
                 proxy_pass http://0.0.0.0:5001/$uri;
         }
 
-        location ~ ^/api/.*$ {
+        location /api {
                 include proxy_params;
-                proxy_pass http://0.0.0.0:5002/$uri;
+                proxy_pass http://0.0.0.0:5002/api;
         }
 
         rewrite ^/redirect_me https://www.google.com permanent;
